@@ -1,28 +1,29 @@
 import "tfconfig/v2" as tfplan
 
+// creating error message for failures //
 error_msg = "All S3 Buckets that store CloudTrail logs must be private"
 
-### gathering cloud trail resources ###
+// gathering cloud trail & s3 resources //
 aws_cloud_trails = filter tfplan.resources as _, rc {
 	rc.type is "aws_cloudtrail" and
 		rc.mode is "managed"
 }
-
-### gathering s3 bucket resources ###
 
 s3_buckets = filter tfplan.resources as _, rc {
 	rc.type is "aws_s3_bucket" and
 		rc.mode is "managed"
 }
 
+// creating list of buckets that have ct logs
 ct_buckets = []
 for aws_cloud_trails as ct {
 	append(ct_buckets, aws_cloud_trails[ct].config.s3_bucket_name.references[1])
 }
 
+// creating list of acls for ct buckets
 acls = []
-for s3_buckets as r {
-	append(acls, s3_buckets[r].config.acl.constant_value)
+for ct_buckets as ctb {
+	append(acls, s3_buckets[ctb].config.acl.constant_value)
 }
 
 buckets_are_public = rule {
@@ -30,7 +31,7 @@ buckets_are_public = rule {
 }
 
 print_msg = func() {
-	if not buckets_are_public {
+	if buckets_are_public {
 		print(error_msg)
 		return false
 	}
