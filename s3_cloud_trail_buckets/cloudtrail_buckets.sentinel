@@ -1,0 +1,45 @@
+import "tfconfig/v2" as tfplan
+
+error_msg = "All S3 Buckets that store CloudTrail logs must be private"
+
+### gathering cloud trail resources ###
+aws_cloud_trails = filter tfplan.resources as _, rc {
+	rc.type is "aws_cloudtrail" and
+		rc.mode is "managed"
+}
+
+### gathering s3 bucket resources ###
+
+s3_buckets = filter tfplan.resources as _, rc {
+	rc.type is "aws_s3_bucket" and
+		rc.mode is "managed"
+}
+
+ct_buckets = []
+for aws_cloud_trails as ct {
+	append(ct_buckets, aws_cloud_trails[ct].config.s3_bucket_name.references[1])
+}
+
+acls = []
+for s3_buckets as r {
+	append(acls, s3_buckets[r].config.acl.constant_value)
+}
+
+buckets_are_public = rule {
+	acls contains "public-read"
+}
+
+print_msg = func() {
+	if not buckets_are_public {
+		print(error_msg)
+		return false
+	}
+	return true
+}
+
+print("s3 bucket acls:",acls)
+
+main = rule {
+	buckets_are_public is false
+}
+print_msg()
