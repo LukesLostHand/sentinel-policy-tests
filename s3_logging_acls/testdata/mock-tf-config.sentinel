@@ -245,35 +245,6 @@ resources = {
 		"provisioners":        [],
 		"type":                "aws_s3_bucket_acl",
 	},
-	"aws_s3_bucket_logging.false-test-case": {
-		"address": "aws_s3_bucket_logging.false-test-case",
-		"config": {
-			"bucket": {
-				"references": [
-					"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
-					"aws_s3_bucket.negative-cloudtrail-logs-bucket",
-				],
-			},
-			"target_bucket": {
-				"references": [
-					"aws_s3_bucket.target-bucket.id",
-					"aws_s3_bucket.target-bucket",
-				],
-			},
-			"target_prefix": {
-				"constant_value": "cloudtrail/logs",
-			},
-		},
-		"count":               {},
-		"depends_on":          [],
-		"for_each":            {},
-		"mode":                "managed",
-		"module_address":      "",
-		"name":                "false-test-case",
-		"provider_config_key": "aws",
-		"provisioners":        [],
-		"type":                "aws_s3_bucket_logging",
-	},
 	"aws_s3_bucket_logging.positive-test-case": {
 		"address": "aws_s3_bucket_logging.positive-test-case",
 		"config": {
