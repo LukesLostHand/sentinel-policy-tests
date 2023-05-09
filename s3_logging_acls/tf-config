@@ -1,0 +1,404 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"default_tags": [
+				{
+					"tags": {
+						"constant_value": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+					},
+				},
+			],
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 4.0",
+	},
+}
+
+resources = {
+	"aws_cloudtrail.example_trail": {
+		"address": "aws_cloudtrail.example_trail",
+		"config": {
+			"event_selector": [
+				{
+					"include_management_events": {
+						"constant_value": true,
+					},
+					"read_write_type": {
+						"constant_value": "All",
+					},
+				},
+			],
+			"include_global_service_events": {
+				"constant_value": true,
+			},
+			"name": {
+				"constant_value": "example-trail",
+			},
+			"s3_bucket_name": {
+				"references": [
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket.bucket",
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+				],
+			},
+			"s3_key_prefix": {
+				"constant_value": "cloudtrail/logs",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example_trail",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudtrail",
+	},
+	"aws_cloudtrail.negative-example_trail": {
+		"address": "aws_cloudtrail.negative-example_trail",
+		"config": {
+			"event_selector": [
+				{
+					"include_management_events": {
+						"constant_value": true,
+					},
+					"read_write_type": {
+						"constant_value": "All",
+					},
+				},
+			],
+			"include_global_service_events": {
+				"constant_value": false,
+			},
+			"name": {
+				"constant_value": "negative-example-trail",
+			},
+			"s3_bucket_name": {
+				"references": [
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket.bucket",
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+				],
+			},
+			"s3_key_prefix": {
+				"constant_value": "cloudtrail/logs",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "negative-example_trail",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudtrail",
+	},
+	"aws_s3_bucket.negative-cloudtrail-logs-bucket": {
+		"address": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "bucket-test-false-8675309",
+			},
+			"force_destroy": {
+				"constant_value": true,
+			},
+			"policy": {
+				"constant_value": null,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "negative-cloudtrail-logs-bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket.positive-cloudtrail-logs-bucket": {
+		"address": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "bucket-test-true-8675309",
+			},
+			"force_destroy": {
+				"constant_value": true,
+			},
+			"policy": {
+				"constant_value": null,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "positive-cloudtrail-logs-bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket.target-bucket": {
+		"address": "aws_s3_bucket.target-bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "logging-target-1138",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "target-bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_acl.false-test-acl": {
+		"address": "aws_s3_bucket_acl.false-test-acl",
+		"config": {
+			"acl": {
+				"constant_value": "private",
+			},
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+				],
+			},
+		},
+		"count": {},
+		"depends_on": [
+			"aws_s3_bucket_ownership_controls.false-test-ownership",
+		],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "false-test-acl",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_acl.logging-bucket-acl": {
+		"address": "aws_s3_bucket_acl.logging-bucket-acl",
+		"config": {
+			"acl": {
+				"constant_value": "private",
+			},
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.target-bucket.id",
+					"aws_s3_bucket.target-bucket",
+				],
+			},
+		},
+		"count": {},
+		"depends_on": [
+			"aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+		],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "logging-bucket-acl",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_acl.true-test-acl": {
+		"address": "aws_s3_bucket_acl.true-test-acl",
+		"config": {
+			"acl": {
+				"constant_value": "private",
+			},
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+				],
+			},
+		},
+		"count": {},
+		"depends_on": [
+			"aws_s3_bucket_ownership_controls.true-test-ownership",
+		],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "true-test-acl",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_logging.false-test-case": {
+		"address": "aws_s3_bucket_logging.false-test-case",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+				],
+			},
+			"target_bucket": {
+				"references": [
+					"aws_s3_bucket.target-bucket.id",
+					"aws_s3_bucket.target-bucket",
+				],
+			},
+			"target_prefix": {
+				"constant_value": "cloudtrail/logs",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "false-test-case",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_logging",
+	},
+	"aws_s3_bucket_logging.positive-test-case": {
+		"address": "aws_s3_bucket_logging.positive-test-case",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+				],
+			},
+			"target_bucket": {
+				"references": [
+					"aws_s3_bucket.target-bucket.id",
+					"aws_s3_bucket.target-bucket",
+				],
+			},
+			"target_prefix": {
+				"constant_value": "cloudtrail/logs",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "positive-test-case",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_logging",
+	},
+	"aws_s3_bucket_ownership_controls.false-test-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.false-test-ownership",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+				],
+			},
+			"rule": [
+				{
+					"object_ownership": {
+						"constant_value": "BucketOwnerPreferred",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "false-test-ownership",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_ownership_controls",
+	},
+	"aws_s3_bucket_ownership_controls.logging-bucket-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.target-bucket.id",
+					"aws_s3_bucket.target-bucket",
+				],
+			},
+			"rule": [
+				{
+					"object_ownership": {
+						"constant_value": "BucketOwnerPreferred",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "logging-bucket-ownership",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_ownership_controls",
+	},
+	"aws_s3_bucket_ownership_controls.true-test-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.true-test-ownership",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+					"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+				],
+			},
+			"rule": [
+				{
+					"object_ownership": {
+						"constant_value": "BucketOwnerPreferred",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "true-test-ownership",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_ownership_controls",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
