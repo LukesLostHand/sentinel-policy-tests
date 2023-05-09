@@ -1,0 +1,2085 @@
+terraform_version = "1.4.6"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_cloudtrail.example_trail": {
+			"address":        "aws_cloudtrail.example_trail",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example_trail",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudtrail",
+			"values": {
+				"advanced_event_selector":    [],
+				"cloud_watch_logs_group_arn": null,
+				"cloud_watch_logs_role_arn":  null,
+				"enable_log_file_validation": false,
+				"enable_logging":             true,
+				"event_selector": [
+					{
+						"data_resource":                    [],
+						"exclude_management_event_sources": null,
+						"include_management_events":        true,
+						"read_write_type":                  "All",
+					},
+				],
+				"include_global_service_events": true,
+				"insight_selector":              [],
+				"is_multi_region_trail":         false,
+				"is_organization_trail":         false,
+				"kms_key_id":                    null,
+				"name":                          "example-trail",
+				"s3_bucket_name":                "bucket-test-true-8675309",
+				"s3_key_prefix":                 "cloudtrail/logs",
+				"sns_topic_name":                null,
+				"tags":                          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+			},
+		},
+		"aws_cloudtrail.negative-example_trail": {
+			"address":        "aws_cloudtrail.negative-example_trail",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "negative-example_trail",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_cloudtrail",
+			"values": {
+				"advanced_event_selector":    [],
+				"cloud_watch_logs_group_arn": null,
+				"cloud_watch_logs_role_arn":  null,
+				"enable_log_file_validation": false,
+				"enable_logging":             true,
+				"event_selector": [
+					{
+						"data_resource":                    [],
+						"exclude_management_event_sources": null,
+						"include_management_events":        true,
+						"read_write_type":                  "All",
+					},
+				],
+				"include_global_service_events": false,
+				"insight_selector":              [],
+				"is_multi_region_trail":         false,
+				"is_organization_trail":         false,
+				"kms_key_id":                    null,
+				"name":                          "negative-example-trail",
+				"s3_bucket_name":                "bucket-test-false-8675309",
+				"s3_key_prefix":                 "cloudtrail/logs",
+				"sns_topic_name":                null,
+				"tags":                          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+			},
+		},
+		"aws_s3_bucket.negative-cloudtrail-logs-bucket": {
+			"address":        "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "negative-cloudtrail-logs-bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "bucket-test-false-8675309",
+				"force_destroy": true,
+				"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-false-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-false-8675309\",\"arn:aws:s3:::bucket-test-false-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_s3_bucket.positive-cloudtrail-logs-bucket": {
+			"address":        "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "positive-cloudtrail-logs-bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "bucket-test-true-8675309",
+				"force_destroy": true,
+				"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-true-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-true-8675309\",\"arn:aws:s3:::bucket-test-true-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_s3_bucket.target-bucket": {
+			"address":        "aws_s3_bucket.target-bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "target-bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "logging-target-1138",
+				"force_destroy": false,
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_s3_bucket_acl.false-test-acl": {
+			"address":        "aws_s3_bucket_acl.false-test-acl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "false-test-acl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_acl",
+			"values": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+		},
+		"aws_s3_bucket_acl.logging-bucket-acl": {
+			"address":        "aws_s3_bucket_acl.logging-bucket-acl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "logging-bucket-acl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_acl",
+			"values": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+		},
+		"aws_s3_bucket_acl.true-test-acl": {
+			"address":        "aws_s3_bucket_acl.true-test-acl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "true-test-acl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_acl",
+			"values": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+		},
+		"aws_s3_bucket_logging.false-test-case": {
+			"address":        "aws_s3_bucket_logging.false-test-case",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "false-test-case",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_logging",
+			"values": {
+				"expected_bucket_owner": null,
+				"target_grant":          [],
+				"target_prefix":         "cloudtrail/logs",
+			},
+		},
+		"aws_s3_bucket_logging.positive-test-case": {
+			"address":        "aws_s3_bucket_logging.positive-test-case",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "positive-test-case",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_logging",
+			"values": {
+				"expected_bucket_owner": null,
+				"target_grant":          [],
+				"target_prefix":         "cloudtrail/logs",
+			},
+		},
+		"aws_s3_bucket_ownership_controls.false-test-ownership": {
+			"address":        "aws_s3_bucket_ownership_controls.false-test-ownership",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "false-test-ownership",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_ownership_controls",
+			"values": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+		},
+		"aws_s3_bucket_ownership_controls.logging-bucket-ownership": {
+			"address":        "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "logging-bucket-ownership",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_ownership_controls",
+			"values": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+		},
+		"aws_s3_bucket_ownership_controls.true-test-ownership": {
+			"address":        "aws_s3_bucket_ownership_controls.true-test-ownership",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "true-test-ownership",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_ownership_controls",
+			"values": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_cloudtrail.example_trail": {
+		"address": "aws_cloudtrail.example_trail",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"advanced_event_selector":    [],
+				"cloud_watch_logs_group_arn": null,
+				"cloud_watch_logs_role_arn":  null,
+				"enable_log_file_validation": false,
+				"enable_logging":             true,
+				"event_selector": [
+					{
+						"data_resource":                    [],
+						"exclude_management_event_sources": null,
+						"include_management_events":        true,
+						"read_write_type":                  "All",
+					},
+				],
+				"include_global_service_events": true,
+				"insight_selector":              [],
+				"is_multi_region_trail":         false,
+				"is_organization_trail":         false,
+				"kms_key_id":                    null,
+				"name":                          "example-trail",
+				"s3_bucket_name":                "bucket-test-true-8675309",
+				"s3_key_prefix":                 "cloudtrail/logs",
+				"sns_topic_name":                null,
+				"tags":                          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+			},
+			"after_unknown": {
+				"advanced_event_selector": [],
+				"arn": true,
+				"event_selector": [
+					{
+						"data_resource": [],
+					},
+				],
+				"home_region":      true,
+				"id":               true,
+				"insight_selector": [],
+				"tags_all":         {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example_trail",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudtrail",
+	},
+	"aws_cloudtrail.negative-example_trail": {
+		"address": "aws_cloudtrail.negative-example_trail",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"advanced_event_selector":    [],
+				"cloud_watch_logs_group_arn": null,
+				"cloud_watch_logs_role_arn":  null,
+				"enable_log_file_validation": false,
+				"enable_logging":             true,
+				"event_selector": [
+					{
+						"data_resource":                    [],
+						"exclude_management_event_sources": null,
+						"include_management_events":        true,
+						"read_write_type":                  "All",
+					},
+				],
+				"include_global_service_events": false,
+				"insight_selector":              [],
+				"is_multi_region_trail":         false,
+				"is_organization_trail":         false,
+				"kms_key_id":                    null,
+				"name":                          "negative-example-trail",
+				"s3_bucket_name":                "bucket-test-false-8675309",
+				"s3_key_prefix":                 "cloudtrail/logs",
+				"sns_topic_name":                null,
+				"tags":                          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+			},
+			"after_unknown": {
+				"advanced_event_selector": [],
+				"arn": true,
+				"event_selector": [
+					{
+						"data_resource": [],
+					},
+				],
+				"home_region":      true,
+				"id":               true,
+				"insight_selector": [],
+				"tags_all":         {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "negative-example_trail",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_cloudtrail",
+	},
+	"aws_s3_bucket.negative-cloudtrail-logs-bucket": {
+		"address": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":        "bucket-test-false-8675309",
+				"force_destroy": true,
+				"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-false-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-false-8675309\",\"arn:aws:s3:::bucket-test-false-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"acl":                                  true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_prefix":                        true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags_all":                             {},
+				"versioning":                           true,
+				"website":                              true,
+				"website_domain":                       true,
+				"website_endpoint":                     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "negative-cloudtrail-logs-bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket.positive-cloudtrail-logs-bucket": {
+		"address": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":        "bucket-test-true-8675309",
+				"force_destroy": true,
+				"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-true-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-true-8675309\",\"arn:aws:s3:::bucket-test-true-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"acl":                                  true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_prefix":                        true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags_all":                             {},
+				"versioning":                           true,
+				"website":                              true,
+				"website_domain":                       true,
+				"website_endpoint":                     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "positive-cloudtrail-logs-bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket.target-bucket": {
+		"address": "aws_s3_bucket.target-bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":        "logging-target-1138",
+				"force_destroy": false,
+				"tags":          null,
+				"tags_all": {
+					"environment": "development",
+					"platform":    "terraform",
+					"repo-name":   "sentinel-access-keys",
+					"user":        "DougReeves",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"acl":                                  true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_prefix":                        true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"policy":                               true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags_all":                             {},
+				"versioning":                           true,
+				"website":                              true,
+				"website_domain":                       true,
+				"website_endpoint":                     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "target-bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket_acl.false-test-acl": {
+		"address": "aws_s3_bucket_acl.false-test-acl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+			"after_unknown": {
+				"access_control_policy": true,
+				"bucket":                true,
+				"id":                    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "false-test-acl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_acl.logging-bucket-acl": {
+		"address": "aws_s3_bucket_acl.logging-bucket-acl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+			"after_unknown": {
+				"access_control_policy": true,
+				"bucket":                true,
+				"id":                    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "logging-bucket-acl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_acl.true-test-acl": {
+		"address": "aws_s3_bucket_acl.true-test-acl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl": "private",
+				"expected_bucket_owner": null,
+			},
+			"after_unknown": {
+				"access_control_policy": true,
+				"bucket":                true,
+				"id":                    true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "true-test-acl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_acl",
+	},
+	"aws_s3_bucket_logging.false-test-case": {
+		"address": "aws_s3_bucket_logging.false-test-case",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"expected_bucket_owner": null,
+				"target_grant":          [],
+				"target_prefix":         "cloudtrail/logs",
+			},
+			"after_unknown": {
+				"bucket":        true,
+				"id":            true,
+				"target_bucket": true,
+				"target_grant":  [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "false-test-case",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_logging",
+	},
+	"aws_s3_bucket_logging.positive-test-case": {
+		"address": "aws_s3_bucket_logging.positive-test-case",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"expected_bucket_owner": null,
+				"target_grant":          [],
+				"target_prefix":         "cloudtrail/logs",
+			},
+			"after_unknown": {
+				"bucket":        true,
+				"id":            true,
+				"target_bucket": true,
+				"target_grant":  [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "positive-test-case",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_logging",
+	},
+	"aws_s3_bucket_ownership_controls.false-test-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.false-test-ownership",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+			"after_unknown": {
+				"bucket": true,
+				"id":     true,
+				"rule": [
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "false-test-ownership",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_ownership_controls",
+	},
+	"aws_s3_bucket_ownership_controls.logging-bucket-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+			"after_unknown": {
+				"bucket": true,
+				"id":     true,
+				"rule": [
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "logging-bucket-ownership",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_ownership_controls",
+	},
+	"aws_s3_bucket_ownership_controls.true-test-ownership": {
+		"address": "aws_s3_bucket_ownership_controls.true-test-ownership",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"rule": [
+					{
+						"object_ownership": "BucketOwnerPreferred",
+					},
+				],
+			},
+			"after_unknown": {
+				"bucket": true,
+				"id":     true,
+				"rule": [
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "true-test-ownership",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_ownership_controls",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"default_tags": [
+						{
+							"tags": {
+								"constant_value": {
+									"environment": "development",
+									"platform":    "terraform",
+									"repo-name":   "sentinel-access-keys",
+									"user":        "DougReeves",
+								},
+							},
+						},
+					],
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 4.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_cloudtrail.example_trail",
+					"expressions": {
+						"event_selector": [
+							{
+								"include_management_events": {
+									"constant_value": true,
+								},
+								"read_write_type": {
+									"constant_value": "All",
+								},
+							},
+						],
+						"include_global_service_events": {
+							"constant_value": true,
+						},
+						"name": {
+							"constant_value": "example-trail",
+						},
+						"s3_bucket_name": {
+							"references": [
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket.bucket",
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+							],
+						},
+						"s3_key_prefix": {
+							"constant_value": "cloudtrail/logs",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example_trail",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudtrail",
+				},
+				{
+					"address": "aws_cloudtrail.negative-example_trail",
+					"expressions": {
+						"event_selector": [
+							{
+								"include_management_events": {
+									"constant_value": true,
+								},
+								"read_write_type": {
+									"constant_value": "All",
+								},
+							},
+						],
+						"include_global_service_events": {
+							"constant_value": false,
+						},
+						"name": {
+							"constant_value": "negative-example-trail",
+						},
+						"s3_bucket_name": {
+							"references": [
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket.bucket",
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+							],
+						},
+						"s3_key_prefix": {
+							"constant_value": "cloudtrail/logs",
+						},
+					},
+					"mode":                "managed",
+					"name":                "negative-example_trail",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_cloudtrail",
+				},
+				{
+					"address": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+					"expressions": {
+						"bucket": {
+							"constant_value": "bucket-test-false-8675309",
+						},
+						"force_destroy": {
+							"constant_value": true,
+						},
+						"policy": {},
+					},
+					"mode":                "managed",
+					"name":                "negative-cloudtrail-logs-bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+					"expressions": {
+						"bucket": {
+							"constant_value": "bucket-test-true-8675309",
+						},
+						"force_destroy": {
+							"constant_value": true,
+						},
+						"policy": {},
+					},
+					"mode":                "managed",
+					"name":                "positive-cloudtrail-logs-bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket.target-bucket",
+					"expressions": {
+						"bucket": {
+							"constant_value": "logging-target-1138",
+						},
+					},
+					"mode":                "managed",
+					"name":                "target-bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket_acl.false-test-acl",
+					"depends_on": [
+						"aws_s3_bucket_ownership_controls.false-test-ownership",
+					],
+					"expressions": {
+						"acl": {
+							"constant_value": "private",
+						},
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "false-test-acl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_acl",
+				},
+				{
+					"address": "aws_s3_bucket_acl.logging-bucket-acl",
+					"depends_on": [
+						"aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+					],
+					"expressions": {
+						"acl": {
+							"constant_value": "private",
+						},
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.target-bucket.id",
+								"aws_s3_bucket.target-bucket",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "logging-bucket-acl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_acl",
+				},
+				{
+					"address": "aws_s3_bucket_acl.true-test-acl",
+					"depends_on": [
+						"aws_s3_bucket_ownership_controls.true-test-ownership",
+					],
+					"expressions": {
+						"acl": {
+							"constant_value": "private",
+						},
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "true-test-acl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_acl",
+				},
+				{
+					"address": "aws_s3_bucket_logging.false-test-case",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+							],
+						},
+						"target_bucket": {
+							"references": [
+								"aws_s3_bucket.target-bucket.id",
+								"aws_s3_bucket.target-bucket",
+							],
+						},
+						"target_prefix": {
+							"constant_value": "cloudtrail/logs",
+						},
+					},
+					"mode":                "managed",
+					"name":                "false-test-case",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_logging",
+				},
+				{
+					"address": "aws_s3_bucket_logging.positive-test-case",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+							],
+						},
+						"target_bucket": {
+							"references": [
+								"aws_s3_bucket.target-bucket.id",
+								"aws_s3_bucket.target-bucket",
+							],
+						},
+						"target_prefix": {
+							"constant_value": "cloudtrail/logs",
+						},
+					},
+					"mode":                "managed",
+					"name":                "positive-test-case",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_logging",
+				},
+				{
+					"address": "aws_s3_bucket_ownership_controls.false-test-ownership",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.negative-cloudtrail-logs-bucket",
+							],
+						},
+						"rule": [
+							{
+								"object_ownership": {
+									"constant_value": "BucketOwnerPreferred",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "false-test-ownership",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_ownership_controls",
+				},
+				{
+					"address": "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.target-bucket.id",
+								"aws_s3_bucket.target-bucket",
+							],
+						},
+						"rule": [
+							{
+								"object_ownership": {
+									"constant_value": "BucketOwnerPreferred",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "logging-bucket-ownership",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_ownership_controls",
+				},
+				{
+					"address": "aws_s3_bucket_ownership_controls.true-test-ownership",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket.id",
+								"aws_s3_bucket.positive-cloudtrail-logs-bucket",
+							],
+						},
+						"rule": [
+							{
+								"object_ownership": {
+									"constant_value": "BucketOwnerPreferred",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "true-test-ownership",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_ownership_controls",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_cloudtrail.example_trail",
+					"mode":           "managed",
+					"name":           "example_trail",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"advanced_event_selector": [],
+						"event_selector": [
+							{
+								"data_resource": [],
+							},
+						],
+						"insight_selector": [],
+						"tags_all":         {},
+					},
+					"type": "aws_cloudtrail",
+					"values": {
+						"advanced_event_selector":    [],
+						"cloud_watch_logs_group_arn": null,
+						"cloud_watch_logs_role_arn":  null,
+						"enable_log_file_validation": false,
+						"enable_logging":             true,
+						"event_selector": [
+							{
+								"data_resource":                    [],
+								"exclude_management_event_sources": null,
+								"include_management_events":        true,
+								"read_write_type":                  "All",
+							},
+						],
+						"include_global_service_events": true,
+						"insight_selector":              [],
+						"is_multi_region_trail":         false,
+						"is_organization_trail":         false,
+						"kms_key_id":                    null,
+						"name":                          "example-trail",
+						"s3_bucket_name":                "bucket-test-true-8675309",
+						"s3_key_prefix":                 "cloudtrail/logs",
+						"sns_topic_name":                null,
+						"tags":                          null,
+						"tags_all": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+					},
+				},
+				{
+					"address":        "aws_cloudtrail.negative-example_trail",
+					"mode":           "managed",
+					"name":           "negative-example_trail",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"advanced_event_selector": [],
+						"event_selector": [
+							{
+								"data_resource": [],
+							},
+						],
+						"insight_selector": [],
+						"tags_all":         {},
+					},
+					"type": "aws_cloudtrail",
+					"values": {
+						"advanced_event_selector":    [],
+						"cloud_watch_logs_group_arn": null,
+						"cloud_watch_logs_role_arn":  null,
+						"enable_log_file_validation": false,
+						"enable_logging":             true,
+						"event_selector": [
+							{
+								"data_resource":                    [],
+								"exclude_management_event_sources": null,
+								"include_management_events":        true,
+								"read_write_type":                  "All",
+							},
+						],
+						"include_global_service_events": false,
+						"insight_selector":              [],
+						"is_multi_region_trail":         false,
+						"is_organization_trail":         false,
+						"kms_key_id":                    null,
+						"name":                          "negative-example-trail",
+						"s3_bucket_name":                "bucket-test-false-8675309",
+						"s3_key_prefix":                 "cloudtrail/logs",
+						"sns_topic_name":                null,
+						"tags":                          null,
+						"tags_all": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+					},
+				},
+				{
+					"address":        "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+					"mode":           "managed",
+					"name":           "negative-cloudtrail-logs-bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags_all":                             {},
+						"versioning":                           [],
+						"website":                              [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"bucket":        "bucket-test-false-8675309",
+						"force_destroy": true,
+						"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-false-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-false-8675309\",\"arn:aws:s3:::bucket-test-false-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+						"tags":          null,
+						"tags_all": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+					"mode":           "managed",
+					"name":           "positive-cloudtrail-logs-bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags_all":                             {},
+						"versioning":                           [],
+						"website":                              [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"bucket":        "bucket-test-true-8675309",
+						"force_destroy": true,
+						"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-true-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-true-8675309\",\"arn:aws:s3:::bucket-test-true-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+						"tags":          null,
+						"tags_all": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket.target-bucket",
+					"mode":           "managed",
+					"name":           "target-bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags_all":                             {},
+						"versioning":                           [],
+						"website":                              [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"bucket":        "logging-target-1138",
+						"force_destroy": false,
+						"tags":          null,
+						"tags_all": {
+							"environment": "development",
+							"platform":    "terraform",
+							"repo-name":   "sentinel-access-keys",
+							"user":        "DougReeves",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_acl.false-test-acl",
+					"mode":           "managed",
+					"name":           "false-test-acl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_control_policy": [],
+					},
+					"type": "aws_s3_bucket_acl",
+					"values": {
+						"acl": "private",
+						"expected_bucket_owner": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_acl.logging-bucket-acl",
+					"mode":           "managed",
+					"name":           "logging-bucket-acl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_control_policy": [],
+					},
+					"type": "aws_s3_bucket_acl",
+					"values": {
+						"acl": "private",
+						"expected_bucket_owner": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_acl.true-test-acl",
+					"mode":           "managed",
+					"name":           "true-test-acl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_control_policy": [],
+					},
+					"type": "aws_s3_bucket_acl",
+					"values": {
+						"acl": "private",
+						"expected_bucket_owner": null,
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_logging.false-test-case",
+					"mode":           "managed",
+					"name":           "false-test-case",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"target_grant": [],
+					},
+					"type": "aws_s3_bucket_logging",
+					"values": {
+						"expected_bucket_owner": null,
+						"target_grant":          [],
+						"target_prefix":         "cloudtrail/logs",
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_logging.positive-test-case",
+					"mode":           "managed",
+					"name":           "positive-test-case",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"target_grant": [],
+					},
+					"type": "aws_s3_bucket_logging",
+					"values": {
+						"expected_bucket_owner": null,
+						"target_grant":          [],
+						"target_prefix":         "cloudtrail/logs",
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_ownership_controls.false-test-ownership",
+					"mode":           "managed",
+					"name":           "false-test-ownership",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"rule": [
+							{},
+						],
+					},
+					"type": "aws_s3_bucket_ownership_controls",
+					"values": {
+						"rule": [
+							{
+								"object_ownership": "BucketOwnerPreferred",
+							},
+						],
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+					"mode":           "managed",
+					"name":           "logging-bucket-ownership",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"rule": [
+							{},
+						],
+					},
+					"type": "aws_s3_bucket_ownership_controls",
+					"values": {
+						"rule": [
+							{
+								"object_ownership": "BucketOwnerPreferred",
+							},
+						],
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_ownership_controls.true-test-ownership",
+					"mode":           "managed",
+					"name":           "true-test-ownership",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"rule": [
+							{},
+						],
+					},
+					"type": "aws_s3_bucket_ownership_controls",
+					"values": {
+						"rule": [
+							{
+								"object_ownership": "BucketOwnerPreferred",
+							},
+						],
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_s3_bucket.target-bucket",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+		},
+		{
+			"attribute": [
+				"bucket",
+			],
+			"resource": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+		},
+		{
+			"attribute": [
+				"bucket",
+			],
+			"resource": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_cloudtrail.example_trail",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"advanced_event_selector":    [],
+					"cloud_watch_logs_group_arn": null,
+					"cloud_watch_logs_role_arn":  null,
+					"enable_log_file_validation": false,
+					"enable_logging":             true,
+					"event_selector": [
+						{
+							"data_resource":                    [],
+							"exclude_management_event_sources": null,
+							"include_management_events":        true,
+							"read_write_type":                  "All",
+						},
+					],
+					"include_global_service_events": true,
+					"insight_selector":              [],
+					"is_multi_region_trail":         false,
+					"is_organization_trail":         false,
+					"kms_key_id":                    null,
+					"name":                          "example-trail",
+					"s3_bucket_name":                "bucket-test-true-8675309",
+					"s3_key_prefix":                 "cloudtrail/logs",
+					"sns_topic_name":                null,
+					"tags":                          null,
+					"tags_all": {
+						"environment": "development",
+						"platform":    "terraform",
+						"repo-name":   "sentinel-access-keys",
+						"user":        "DougReeves",
+					},
+				},
+				"after_sensitive": {
+					"advanced_event_selector": [],
+					"event_selector": [
+						{
+							"data_resource": [],
+						},
+					],
+					"insight_selector": [],
+					"tags_all":         {},
+				},
+				"after_unknown": {
+					"advanced_event_selector": [],
+					"arn": true,
+					"event_selector": [
+						{
+							"data_resource": [],
+						},
+					],
+					"home_region":      true,
+					"id":               true,
+					"insight_selector": [],
+					"tags_all":         {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example_trail",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudtrail",
+		},
+		{
+			"address": "aws_cloudtrail.negative-example_trail",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"advanced_event_selector":    [],
+					"cloud_watch_logs_group_arn": null,
+					"cloud_watch_logs_role_arn":  null,
+					"enable_log_file_validation": false,
+					"enable_logging":             true,
+					"event_selector": [
+						{
+							"data_resource":                    [],
+							"exclude_management_event_sources": null,
+							"include_management_events":        true,
+							"read_write_type":                  "All",
+						},
+					],
+					"include_global_service_events": false,
+					"insight_selector":              [],
+					"is_multi_region_trail":         false,
+					"is_organization_trail":         false,
+					"kms_key_id":                    null,
+					"name":                          "negative-example-trail",
+					"s3_bucket_name":                "bucket-test-false-8675309",
+					"s3_key_prefix":                 "cloudtrail/logs",
+					"sns_topic_name":                null,
+					"tags":                          null,
+					"tags_all": {
+						"environment": "development",
+						"platform":    "terraform",
+						"repo-name":   "sentinel-access-keys",
+						"user":        "DougReeves",
+					},
+				},
+				"after_sensitive": {
+					"advanced_event_selector": [],
+					"event_selector": [
+						{
+							"data_resource": [],
+						},
+					],
+					"insight_selector": [],
+					"tags_all":         {},
+				},
+				"after_unknown": {
+					"advanced_event_selector": [],
+					"arn": true,
+					"event_selector": [
+						{
+							"data_resource": [],
+						},
+					],
+					"home_region":      true,
+					"id":               true,
+					"insight_selector": [],
+					"tags_all":         {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "negative-example_trail",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_cloudtrail",
+		},
+		{
+			"address": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":        "bucket-test-false-8675309",
+					"force_destroy": true,
+					"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-false-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-false-8675309\",\"arn:aws:s3:::bucket-test-false-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+					"tags":          null,
+					"tags_all": {
+						"environment": "development",
+						"platform":    "terraform",
+						"repo-name":   "sentinel-access-keys",
+						"user":        "DougReeves",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags_all":                             {},
+					"versioning":                           [],
+					"website":                              [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"acl":                                  true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_prefix":                        true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags_all":                             {},
+					"versioning":                           true,
+					"website":                              true,
+					"website_domain":                       true,
+					"website_endpoint":                     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "negative-cloudtrail-logs-bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":        "bucket-test-true-8675309",
+					"force_destroy": true,
+					"policy":        "{\"Statement\":[{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::bucket-test-true-8675309\",\"Sid\":\"AWSCloudTrailAclCheck\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::bucket-test-true-8675309\",\"arn:aws:s3:::bucket-test-true-8675309/*\"],\"Sid\":\"AWSCloudTrailWrite\"}],\"Version\":\"2012-10-17\"}",
+					"tags":          null,
+					"tags_all": {
+						"environment": "development",
+						"platform":    "terraform",
+						"repo-name":   "sentinel-access-keys",
+						"user":        "DougReeves",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags_all":                             {},
+					"versioning":                           [],
+					"website":                              [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"acl":                                  true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_prefix":                        true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags_all":                             {},
+					"versioning":                           true,
+					"website":                              true,
+					"website_domain":                       true,
+					"website_endpoint":                     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "positive-cloudtrail-logs-bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket.target-bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":        "logging-target-1138",
+					"force_destroy": false,
+					"tags":          null,
+					"tags_all": {
+						"environment": "development",
+						"platform":    "terraform",
+						"repo-name":   "sentinel-access-keys",
+						"user":        "DougReeves",
+					},
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags_all":                             {},
+					"versioning":                           [],
+					"website":                              [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"acl":                                  true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_prefix":                        true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"policy":                               true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags_all":                             {},
+					"versioning":                           true,
+					"website":                              true,
+					"website_domain":                       true,
+					"website_endpoint":                     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "target-bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket_acl.false-test-acl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl": "private",
+					"expected_bucket_owner": null,
+				},
+				"after_sensitive": {
+					"access_control_policy": [],
+				},
+				"after_unknown": {
+					"access_control_policy": true,
+					"bucket":                true,
+					"id":                    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "false-test-acl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_acl",
+		},
+		{
+			"address": "aws_s3_bucket_acl.logging-bucket-acl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl": "private",
+					"expected_bucket_owner": null,
+				},
+				"after_sensitive": {
+					"access_control_policy": [],
+				},
+				"after_unknown": {
+					"access_control_policy": true,
+					"bucket":                true,
+					"id":                    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "logging-bucket-acl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_acl",
+		},
+		{
+			"address": "aws_s3_bucket_acl.true-test-acl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl": "private",
+					"expected_bucket_owner": null,
+				},
+				"after_sensitive": {
+					"access_control_policy": [],
+				},
+				"after_unknown": {
+					"access_control_policy": true,
+					"bucket":                true,
+					"id":                    true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "true-test-acl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_acl",
+		},
+		{
+			"address": "aws_s3_bucket_logging.false-test-case",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"expected_bucket_owner": null,
+					"target_grant":          [],
+					"target_prefix":         "cloudtrail/logs",
+				},
+				"after_sensitive": {
+					"target_grant": [],
+				},
+				"after_unknown": {
+					"bucket":        true,
+					"id":            true,
+					"target_bucket": true,
+					"target_grant":  [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "false-test-case",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_logging",
+		},
+		{
+			"address": "aws_s3_bucket_logging.positive-test-case",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"expected_bucket_owner": null,
+					"target_grant":          [],
+					"target_prefix":         "cloudtrail/logs",
+				},
+				"after_sensitive": {
+					"target_grant": [],
+				},
+				"after_unknown": {
+					"bucket":        true,
+					"id":            true,
+					"target_bucket": true,
+					"target_grant":  [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "positive-test-case",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_logging",
+		},
+		{
+			"address": "aws_s3_bucket_ownership_controls.false-test-ownership",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"rule": [
+						{
+							"object_ownership": "BucketOwnerPreferred",
+						},
+					],
+				},
+				"after_sensitive": {
+					"rule": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"bucket": true,
+					"id":     true,
+					"rule": [
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "false-test-ownership",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_ownership_controls",
+		},
+		{
+			"address": "aws_s3_bucket_ownership_controls.logging-bucket-ownership",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"rule": [
+						{
+							"object_ownership": "BucketOwnerPreferred",
+						},
+					],
+				},
+				"after_sensitive": {
+					"rule": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"bucket": true,
+					"id":     true,
+					"rule": [
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "logging-bucket-ownership",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_ownership_controls",
+		},
+		{
+			"address": "aws_s3_bucket_ownership_controls.true-test-ownership",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"rule": [
+						{
+							"object_ownership": "BucketOwnerPreferred",
+						},
+					],
+				},
+				"after_sensitive": {
+					"rule": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"bucket": true,
+					"id":     true,
+					"rule": [
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "true-test-ownership",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_ownership_controls",
+		},
+	],
+	"terraform_version": "1.4.6",
+}
