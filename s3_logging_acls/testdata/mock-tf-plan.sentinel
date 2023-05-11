@@ -211,23 +211,6 @@ planned_values = {
 				"expected_bucket_owner": null,
 			},
 		},
-		"aws_s3_bucket_logging.false-test-case": {
-			"address":        "aws_s3_bucket_logging.false-test-case",
-			"depends_on":     [],
-			"deposed_key":    "",
-			"index":          null,
-			"mode":           "managed",
-			"module_address": "",
-			"name":           "false-test-case",
-			"provider_name":  "registry.terraform.io/hashicorp/aws",
-			"tainted":        false,
-			"type":           "aws_s3_bucket_logging",
-			"values": {
-				"expected_bucket_owner": null,
-				"target_grant":          [],
-				"target_prefix":         "cloudtrail/logs",
-			},
-		},
 		"aws_s3_bucket_logging.positive-test-case": {
 			"address":        "aws_s3_bucket_logging.positive-test-case",
 			"depends_on":     [],
@@ -665,33 +648,6 @@ resource_changes = {
 		"provider_name":  "registry.terraform.io/hashicorp/aws",
 		"type":           "aws_s3_bucket_acl",
 	},
-	"aws_s3_bucket_logging.false-test-case": {
-		"address": "aws_s3_bucket_logging.false-test-case",
-		"change": {
-			"actions": [
-				"create",
-			],
-			"after": {
-				"expected_bucket_owner": null,
-				"target_grant":          [],
-				"target_prefix":         "cloudtrail/logs",
-			},
-			"after_unknown": {
-				"bucket":        true,
-				"id":            true,
-				"target_bucket": true,
-				"target_grant":  [],
-			},
-			"before": null,
-		},
-		"deposed":        "",
-		"index":          null,
-		"mode":           "managed",
-		"module_address": "",
-		"name":           "false-test-case",
-		"provider_name":  "registry.terraform.io/hashicorp/aws",
-		"type":           "aws_s3_bucket_logging",
-	},
 	"aws_s3_bucket_logging.positive-test-case": {
 		"address": "aws_s3_bucket_logging.positive-test-case",
 		"change": {
@@ -1023,31 +979,6 @@ raw = {
 					"provider_config_key": "aws",
 					"schema_version":      0,
 					"type":                "aws_s3_bucket_acl",
-				},
-				{
-					"address": "aws_s3_bucket_logging.false-test-case",
-					"expressions": {
-						"bucket": {
-							"references": [
-								"aws_s3_bucket.negative-cloudtrail-logs-bucket.id",
-								"aws_s3_bucket.negative-cloudtrail-logs-bucket",
-							],
-						},
-						"target_bucket": {
-							"references": [
-								"aws_s3_bucket.target-bucket.id",
-								"aws_s3_bucket.target-bucket",
-							],
-						},
-						"target_prefix": {
-							"constant_value": "cloudtrail/logs",
-						},
-					},
-					"mode":                "managed",
-					"name":                "false-test-case",
-					"provider_config_key": "aws",
-					"schema_version":      0,
-					"type":                "aws_s3_bucket_logging",
 				},
 				{
 					"address": "aws_s3_bucket_logging.positive-test-case",
@@ -1392,22 +1323,6 @@ raw = {
 					},
 				},
 				{
-					"address":        "aws_s3_bucket_logging.false-test-case",
-					"mode":           "managed",
-					"name":           "false-test-case",
-					"provider_name":  "registry.terraform.io/hashicorp/aws",
-					"schema_version": 0,
-					"sensitive_values": {
-						"target_grant": [],
-					},
-					"type": "aws_s3_bucket_logging",
-					"values": {
-						"expected_bucket_owner": null,
-						"target_grant":          [],
-						"target_prefix":         "cloudtrail/logs",
-					},
-				},
-				{
 					"address":        "aws_s3_bucket_logging.positive-test-case",
 					"mode":           "managed",
 					"name":           "positive-test-case",
@@ -1491,12 +1406,6 @@ raw = {
 			"attribute": [
 				"id",
 			],
-			"resource": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
-		},
-		{
-			"attribute": [
-				"id",
-			],
 			"resource": "aws_s3_bucket.target-bucket",
 		},
 		{
@@ -1507,15 +1416,21 @@ raw = {
 		},
 		{
 			"attribute": [
-				"bucket",
+				"id",
 			],
-			"resource": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
+			"resource": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
 		},
 		{
 			"attribute": [
 				"bucket",
 			],
 			"resource": "aws_s3_bucket.negative-cloudtrail-logs-bucket",
+		},
+		{
+			"attribute": [
+				"bucket",
+			],
+			"resource": "aws_s3_bucket.positive-cloudtrail-logs-bucket",
 		},
 	],
 	"resource_changes": [
@@ -1924,34 +1839,6 @@ raw = {
 			"name":          "true-test-acl",
 			"provider_name": "registry.terraform.io/hashicorp/aws",
 			"type":          "aws_s3_bucket_acl",
-		},
-		{
-			"address": "aws_s3_bucket_logging.false-test-case",
-			"change": {
-				"actions": [
-					"create",
-				],
-				"after": {
-					"expected_bucket_owner": null,
-					"target_grant":          [],
-					"target_prefix":         "cloudtrail/logs",
-				},
-				"after_sensitive": {
-					"target_grant": [],
-				},
-				"after_unknown": {
-					"bucket":        true,
-					"id":            true,
-					"target_bucket": true,
-					"target_grant":  [],
-				},
-				"before":           null,
-				"before_sensitive": false,
-			},
-			"mode":          "managed",
-			"name":          "false-test-case",
-			"provider_name": "registry.terraform.io/hashicorp/aws",
-			"type":          "aws_s3_bucket_logging",
 		},
 		{
 			"address": "aws_s3_bucket_logging.positive-test-case",
